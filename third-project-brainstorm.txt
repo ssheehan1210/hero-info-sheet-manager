@@ -1,0 +1,127 @@
+Title (subject to change): ULTIMATE SUPERPOWER DATABASE
+
+
+
+Potential Data Pathways:
+
+- MainPage (login functionality, navigation to pages that don't need login)
+	|
+	|--> UserData (login required, navigation to pages exclusive to loggedin users)
+		^
+		^
+		^
+		|
+		|<--- DCMainData (Looks for users data based on id, navigation to hero roster, potential navigation to villain roster)
+		|	^
+		|	|
+		|	|<--- UserCurrentlySelectedDCCharacter
+		|	|
+		|	|<--- UserArchivedDCCharacters
+		|
+		|<--- MarvelMainData (Looks for User's data based on id, navigation to hero roster, potential navigation to villian roster)
+		|	^
+		|	|
+		|	|<--- UserCurrentlySelectedDCCharacter
+		|	|
+		|	|<--- UserArchivedDCCharacters
+		|
+		|<--- MyHeroAcademiaMainData (Looks for user's data based on id, nav to hero roster, potential nav to villian roster)
+			^
+			|
+			|<--- UserCurrentlySelectedDCCharacter
+			|
+			|<--- UserArchivedDCCharacters
+		
+
+
+
+Databases:
+
+- Users
+- DC Characters
+- Marvel Characters
+- HeroAca Characters
+
+
+
+Components:
+
+- App.js
+	- App.css
+- Login.js
+- UserPage.js
+	- FinishedCharacters
+		- FinishedDCCard
+			- FinishedDCCard.js
+			- FinishedDCCard.css
+		- FinishedMarvelCard
+			- FinishedMarvelCard.js
+			- FinishedMarvelCard.css
+		- FinishedHeroAcaCard
+			- FinishedHeroAcaCard.js
+			- FinishedHeroAcaCard.css
+	- CreateCharacterForms
+		- DCSheet
+			- DCSheet.js
+			- DCSheet.css
+		- MarvelSheet
+			- MarvelSheet.js
+			- MarvelSheet.css
+		- HeroAcaSheet
+			- HeroAcaSheet.js
+			- HeroAcaSheet.css
+- OtherUsersList.js
+- OtherCharactersList.js
+
+
+
+States:
+
+User State:
+- username
+- password
+- isLoggedIn
+
+DC Character State:
+- creater (based on either the username or the id of the User who made the character)
+- name (real name)
+- title (public persona; ex. Batman)
+- subtitles (optional; extra names that hints towards the character's role in society; ex. The Dark Knight, The World's Greatest Detective)
+- gender
+- hometown
+- currentLocation (where the character mainly operates in)
+- image (picture of your character)
+- affiliation ("Hero" / "Villain" / "Neutral" / etc.)
+- hasSuperpowers (boolean)
+- arsenal
+- isOverEighteen (boolean)
+
+Marvel Character State:
+- creater (based on either the username or the id of the User who made the character)
+- name (real name)
+- title (public persona; ex. Deadpool)
+- subtitles (optional; extra names that hints towards the character's role in society; ex. The Merc With A Mouth)
+- gender
+- hometown
+- currentLocation (where the character mainly operates in)
+- image (picture of your character)
+- affiliation ("Hero" / "Villain" / "Neutral" / etc.)
+- hasSuperpowers (boolean)
+- arsenal
+- isOverEighteen (boolean)
+
+HeroAca Character State: (this would have to be something built from scratch)
+- creater (based on either the username or the id of the User who made the character)
+- name (real name)
+- heroName (the superhero name the public knows you by; equal to the title property in DC and Marvel)
+- heroTitle (official hero title; similar to a subtitle property in DC and Marvel; ex. The Hellflame Hero)
+- gender
+- hometown
+- currentLocation (where the character mainly operates in)
+- image (picture of your character)
+- quirkName (quirk = superpower; no boolean needed since every HeroAca character must have a quirk)
+- arsenal
+- isHero (boolean; people in this database must be either a Hero or a Villain)
+- isOverEighteen (boolean)
+
+
