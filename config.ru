@@ -1,4 +1,4 @@
-require 'sinatra-base'
+require 'sinatra/base'
 
 require './controllers/ApplicationController.rb'
 require './controllers/HeroController.rb'

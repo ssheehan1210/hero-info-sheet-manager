@@ -2,7 +2,14 @@ CREATE DATABASE gathirdproject;
 
 \c gathirdproject
 
-CREATE TABLE heroes (
+CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
-	title VARCHAR(255)
+	username VARCHAR(32),
+	password_digest VARCHAR(60)
+);
+
+CREATE TABLE heroes(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	user_id INT REFERENCES users(id)
 );
