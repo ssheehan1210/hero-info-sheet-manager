@@ -5,16 +5,15 @@ class HeroController < ApplicationController
 	end
 
 	post '/' do
+		'this is a post'
 		@heroes = Hero.new
 		@heroes.name = params[:name]
-		# @heroes.user_id = params[:user_id]
+		@heroes.user_id = params[:user_id]
 		@heroes.save
 
 		binding.pry
 
 		@heroes.to_json
-
-		'saved post'
 	end
 
 	put '/:id' do

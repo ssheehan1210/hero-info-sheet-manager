@@ -5,4 +5,5 @@ gem 'json'
 gem 'pg'
 gem 'sinatra-activerecord'
 gem 'pry'
+gem 'bcrypt'
 gem "sinatra-cross_origin", "~> 0.3.1"
