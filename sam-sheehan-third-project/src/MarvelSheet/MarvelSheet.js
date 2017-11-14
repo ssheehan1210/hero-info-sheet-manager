@@ -4,7 +4,7 @@ import './MarvelSheet.css';
 export class MarvelSheet extends Component {
 	render() {
 		return (
-			<div className="col s12">
+			<div>
 				<p className='text-seven'>This represents the Marvel Character Sheet.</p>
 			</div>
 		)

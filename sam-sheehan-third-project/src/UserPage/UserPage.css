@@ -1,32 +1,37 @@
-dl {
+/*img {
+	max-width: 25vw;
+}*/
+
+/*dl {
 	display: flex;
 	width: 32vw;
-}
+}*/
 
 dt {
 	font-weight: bold;
+}
+
+button {
+	width: 25vw;
+}
+
+.row {
+	margin-bottom: 15px;
 }
 
 .userhead-container {
 	background-color: grey;
 }
 
-.card-deck {
+/*.card-deck {
 	display: flex;
-}
+}*/
 
 .card {
-	width: 100vw;
+	width: 28vw;
 }
 
-.card-img-top {
-	height: 32vw;
-	width: 32vw;
-	max-width: 100%;
-	max-height: 100%;
-}
-
-.card-title {
+/*.card-title {
 	margin-left: 5px;
 	margin-right: 5px;
 	font-size: 1em;
@@ -35,9 +40,28 @@ dt {
 .card-text {
 	margin-left: 5px;
 	margin-right: 5px;
+}*/
+
+/*.card-block {
+	display: block;
+	width: 32vw;
+	height: auto;
+	max-height: 100%;
+	max-width: 100%;
+}*/
+
+/*.card-footer {
+	display: block;
+}*/
+
+img.card-img-top {
+	width: 100%;
 }
 
-.card-block button {
-	width: 32vw;
-	margin-bottom: 5px;
-}
+/*.card-block .row {
+	margin-bottom: unset;
+}*/
+
+/*.card-block .row .col.s6 p {
+	margin: 0.5em 0;
+}*/

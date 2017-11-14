@@ -9,6 +9,19 @@ class HeroController < ApplicationController
 		@heroes = Hero.new
 		@heroes.name = params[:name]
 		@heroes.user_id = params[:user_id]
+		@heroes.title = params[:title]
+		@heroes.subtitle = params[:subtitle]
+		@heroes.over_eighteen = params[:over_eighteen]
+		@heroes.gender = params[:gender]
+		@heroes.hometown = params[:hometown]
+		@heroes.current_location = params[:current_location]
+		@heroes.image = params[:image]
+		@heroes.affiliation = params[:affiliation]
+		@heroes.has_superpowers = params[:has_superpowers]
+		@heroes.powers = params[:powers]
+		@heroes.abilities = params[:abilities]
+		@heroes.arsenal = params[:arsenal]
+		@heroes.weaknesses = params[:weaknesses]
 		@heroes.save
 
 		binding.pry
@@ -19,6 +32,20 @@ class HeroController < ApplicationController
 	put '/:id' do
 		@heroes = Hero.find_by(id: params[:id])
 		@heroes.name = params[:name]
+		@heroes.user_id = params[:user_id]
+		@heroes.title = params[:title]
+		@heroes.subtitle = params[:subtitle]
+		@heroes.over_eighteen = params[:over_eighteen]
+		@heroes.gender = params[:gender]
+		@heroes.hometown = params[:hometown]
+		@heroes.current_location = params[:current_location]
+		@heroes.image = params[:image]
+		@heroes.affiliation = params[:affiliation]
+		@heroes.has_superpowers = params[:has_superpowers]
+		@heroes.powers = params[:powers]
+		@heroes.abilities = params[:abilities]
+		@heroes.arsenal = params[:arsenal]
+		@heroes.weaknesses = params[:weaknesses]
 		@heroes.save
 
 		'put in'
