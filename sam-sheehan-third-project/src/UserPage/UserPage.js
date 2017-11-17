@@ -14,14 +14,43 @@ export class UserPage extends Component {
 			targetDcHeroImage: '',
 			targetAcademiaHeroImage: '',
 			targetMarvelHeroImage: '',
-			targetHeroEditData: [{}]
+			targetHeroEditData: [{}],
+			targetidInputValue: '',
+			targetnameInputValue: '',
+			targettitleInputValue: '',
+			targetsubtitleInputValue: '',
+			targetoverEighteenInputValue: '',
+			targetgenderInputValue: '',
+			targethometownInputValue: '',
+			targetcurrentLocationInputValue: '',
+			targetimageInputValue: '',
+			targetaffiliationInputValue: '',
+			targethasSuperpowersInputValue: '',
+			targetpowersInputValue: '',
+			targetabilitiesInputValue: '',
+			targetarsenalInputValue: '',
+			targetweaknessesInputValue: '',
+			characterOverEighteen: true,
+			notOverEighteen: false,
+			hasSuperpowers: true,
+			hasNoSuperpowers: false
 		};
 		this.handleChange = this.handleChange.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange = (e) => {
 		this.setState({value: e.target.value});
+	}
+
+	handleInputChange(event) {
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
+		this.setState({
+			[name]: value
+		});
 	}
 
 	handleSubmit = (e) => {
@@ -33,6 +62,21 @@ export class UserPage extends Component {
 		const state = this.state;
 		const foundData = this.props.data.find(x => x.dc_hero === true);
 		state.targetHeroEditData = foundData;
+		state.targetidInputValue = state.targetHeroEditData.id;
+		state.targetnameInputValue = state.targetHeroEditData.name;
+		state.targettitleInputValue = state.targetHeroEditData.title;
+		state.targetsubtitleInputValue = state.targetHeroEditData.subtitle;
+		state.targetoverEighteenInputValue = state.targetHeroEditData.over_eighteen;
+		state.targetgenderInputValue = state.targetHeroEditData.gender;
+		state.targethometownInputValue = state.targetHeroEditData.hometown;
+		state.targetcurrentLocationInputValue = state.targetHeroEditData.current_location;
+		state.targetimageInputValue = state.targetHeroEditData.image;
+		state.targetaffiliationInputValue = state.targetHeroEditData.affiliation;
+		state.targethasSuperpowersInputValue = state.targetHeroEditData.has_superpowers;
+		state.targetpowersInputValue = state.targetHeroEditData.powers;
+		state.targetabilitiesInputValue = state.targetHeroEditData.abilities;
+		state.targetarsenalInputValue = state.targetHeroEditData.arsenal;
+		state.targetweaknessesInputValue = state.targetHeroEditData.weaknesses;
 		this.setState(state);
 		console.log(this.state.targetHeroEditData);
 	}
@@ -49,9 +93,62 @@ export class UserPage extends Component {
 		this.setState(state);
 	}
 
-	// handleInput = (e) => {
-	// 	...
-	// }
+	finishedEditing = () => {
+		const state = this.state;
+		console.log(state.targetHeroEditData, 'this is the current state of the targetHeroEditData');
+		// state.targetidInputValue = state.targetHeroEditData.id;
+		// state.targetnameInputValue = state.targetHeroEditData.name;
+		// state.targettitleInputValue = state.targetHeroEditData.title;
+		// state.targetsubtitleInputValue = state.targetHeroEditData.subtitle;
+		// state.targetoverEighteenInputValue = state.targetHeroEditData.over_eighteen;
+		// state.targetgenderInputValue = state.targetHeroEditData.gender;
+		// state.targethometownInputValue = state.targetHeroEditData.hometown;
+		// state.targetcurrentLocationInputValue = state.targetHeroEditData.current_location;
+		// state.targetimageInputValue = state.targetHeroEditData.image;
+		// state.targetaffiliationInputValue = state.targetHeroEditData.affiliation;
+		// state.targethasSuperpowersInputValue = state.targetHeroEditData.has_superpowers;
+		// state.targetpowersInputValue = state.targetHeroEditData.powers;
+		// state.targetabilitiesInputValue = state.targetHeroEditData.abilities;
+		// state.targetarsenalInputValue = state.targetHeroEditData.arsenal;
+		// state.targetweaknessesInputValue = state.targetHeroEditData.weaknesses;
+		// this.setState(state);
+		this.props.editHeroInfo(state.targetidInputValue, state.targetnameInputValue, state.targettitleInputValue, state.targetsubtitleInputValue, state.targetoverEighteenInputValue, state.targetgenderInputValue, state.targethometownInputValue, state.targetcurrentLocationInputValue, state.targetimageInputValue, state.targetaffiliationInputValue, state.targethasSuperpowersInputValue, state.targetpowersInputValue, state.targetabilitiesInputValue, state.targetarsenalInputValue, state.targetweaknessesInputValue);
+	}
+
+	handleInput = (e) => {
+		const state = this.state;
+		state.targetidInputValue = state.targetHeroEditData.id;
+		if (e.target.id === "dchero-name") {
+			state.targetnameInputValue = e.target.value;
+		} else if (e.target.id === "dchero-title") {
+			state.targettitleInputValue = e.target.value;
+		} else if (e.target.id === "dchero-subtitle") {
+			state.targetsubtitleInputValue = e.target.value;
+		} else if (e.target.id === "dchero-over-eighteen" || e.target.id === "dchero-under-eighteen") {
+			state.targetoverEighteenInputValue = e.target.value;
+		} else if (e.target.id === "dchero-gender") {
+			state.targetgenderInputValue = e.target.value;
+		} else if (e.target.id === "dchero-hometown") {
+			state.targethometownInputValue = e.target.value;
+		} else if (e.target.id === "dchero-current-location") {
+			state.targetcurrentLocationInputValue = e.target.value;
+		} else if (e.target.id === "dchero-image") {
+			state.targetimageInputValue = e.target.value;
+		} else if (e.target.id === "dchero-affiliation") {
+			state.targetaffiliationInputValue = e.target.value;
+		} else if (e.target.id === "dchero-has-superpowers" || e.target.id === "dchero-has-no-superpowers") {
+			state.targethasSuperpowersInputValue = e.target.value;
+		} else if (e.target.id === "dchero-powers") {
+			state.targetpowersInputValue = e.target.value;
+		} else if (e.target.id === "dchero-abilities") {
+			state.targetabilitiesInputValue = e.target.value;
+		} else if (e.target.id === "dchero-arsenal") {
+			state.targetarsenalInputValue = e.target.value;
+		} else if (e.target.id === "dchero-weaknesses") {
+			state.targetweaknessesInputValue = e.target.value;
+		}
+		this.setState(state);
+	}
 
 	render() {
 		// this.props.data.map((item, i) => {
@@ -83,99 +180,99 @@ export class UserPage extends Component {
 
 
 		return (
-			<div>
+			<div onSubmit={this.handleSubmit}>
 				<div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 					<div className="modal-dialog" role="document">
 						<div className="modal-content">
 							<div className="modal-header">
-								<h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+								<h5 className="modal-title" id="exampleModalLongTitle">Edit Character</h5>
 								<button type="button" className="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div className="modal-body">
-								<form onSubmit={this.handleSubmit}>
+								<form>
 									<div className="form-group">
 										<label className="form-control-label">Name:</label>
-										<input type="text" className="form-control" id="dchero-name" value={this.state.targetHeroEditData.name} onChange={this.handleChange} />
+										<input type="text" className="form-control" id="dchero-name" value={this.state.targetnameInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Title:</label>
-										<input type="text" className="form-control" id="dchero-title" value={this.state.targetHeroEditData.title} />
+										<input type="text" className="form-control" id="dchero-title" value={this.state.targettitleInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Subtitle:</label>
-										<input type="text" className="form-control" id="dchero-subtitle" value={this.state.targetHeroEditData.subtitle} />
+										<input type="text" className="form-control" id="dchero-subtitle" value={this.state.targetsubtitleInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label>Age is Over Eighteen:</label>
 										<div className="form-check">
 										{this.state.targetHeroEditData.over_eighteen ?
 											<label className="form-check-label">
-												<input className="form-check-input" type="checkbox" value={this.state.targetHeroEditData.over_eighteen} checked/> Check if True
+												<input className="form-check-input" id="dchero-over-eighteen" name="characterOverEighteen" type="checkbox" value={this.state.targetoverEighteenInputValue} onChange={this.handleInputChange} checked/> Check if True
 											</label>
 										:
 											<label className="form-check-label">
-												<input className="form-check-input" type="checkbox" value={this.state.targetHeroEditData.over_eighteen}/> Check if True
+												<input className="form-check-input" id="dchero-under-eighteen" name="notOverEighteen" type="checkbox" value={this.state.targetoverEighteenInputValue} onChange={this.handleInputChange} /> Check if True
 											</label>
 										}
 										</div>
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Gender:</label>
-										<input type="text" className="form-control" id="dchero-gender" value={this.state.targetHeroEditData.gender} />
+										<input type="text" className="form-control" id="dchero-gender" value={this.state.targetgenderInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Hometown:</label>
-										<input type="text" className="form-control" id="dchero-hometown" value={this.state.targetHeroEditData.hometown} />
+										<input type="text" className="form-control" id="dchero-hometown" value={this.state.targethometownInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Current Location:</label>
-										<input type="text" className="form-control" id="dchero-current-location" value={this.state.targetHeroEditData.current_location} />
+										<input type="text" className="form-control" id="dchero-current-location" value={this.state.targetcurrentLocationInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Image (HTTP Link):</label>
-										<input type="text" className="form-control" id="dchero-image" value={this.state.targetHeroEditData.image} />
+										<input type="text" className="form-control" id="dchero-image" value={this.state.targetimageInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Affiliation:</label>
-										<input type="text" className="form-control" id="dchero-affiliation" value={this.state.targetHeroEditData.affiliation} />
+										<input type="text" className="form-control" id="dchero-affiliation" value={this.state.targetaffiliationInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label>Does This Character have Superpowers?</label>
 										<div className="form-check">
 										{this.state.targetHeroEditData.has_superpowers ?
 											<label className="form-check-label">
-												<input className="form-check-input" type="checkbox" value={this.state.targetHeroEditData.has_superpowers} checked/> Check if True
+												<input className="form-check-input" id="dchero-has-superpowers" name="hasSuperpowers" type="checkbox" value={this.state.targethasSuperpowersInputValue} onChange={this.handleInputChange} checked/> Check if True
 											</label>
 										:
 											<label className="form-check-label">
-												<input className="form-check-input" type="checkbox" value={this.state.targetHeroEditData.has_superpowers}/> Check if True
+												<input className="form-check-input" id="dchero-has-no-superpowers" name="hasNoSuperpowers" type="checkbox" value={this.state.targethasSuperpowersInputValue} onChange={this.handleInputChange} /> Check if True
 											</label>
 										}
 										</div>
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Powers:</label>
-										<input type="text" className="form-control" id="dchero-powers" value={this.state.targetHeroEditData.powers} />
+										<input type="text" className="form-control" id="dchero-powers" value={this.state.targetpowersInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Abilities:</label>
-										<input type="text" className="form-control" id="dchero-abilities" value={this.state.targetHeroEditData.abilities} />
+										<input type="text" className="form-control" id="dchero-abilities" value={this.state.targetabilitiesInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Arsenal:</label>
-										<input type="text" className="form-control" id="dchero-arsenal" value={this.state.targetHeroEditData.arsenal} />
+										<input type="text" className="form-control" id="dchero-arsenal" value={this.state.targetarsenalInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 									<div className="form-group">
 										<label className="form-control-label">Weaknesses:</label>
-										<input type="text" className="form-control" id="dchero-weaknesses" value={this.state.targetHeroEditData.weaknesses} />
+										<input type="text" className="form-control" id="dchero-weaknesses" value={this.state.targetweaknessesInputValue} onKeyPress={this.handleInput} onChange={this.handleInput} />
 									</div>
 								</form>
 							</div>
 							<div className="modal-footer">
 								<button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button type="button" className="btn btn-primary" value="Submit">Save changes</button>
+								<button value="Submit" type="button" className="btn btn-primary" onClick={this.finishedEditing}>Save changes</button>
 							</div>
 						</div>
 					</div>
