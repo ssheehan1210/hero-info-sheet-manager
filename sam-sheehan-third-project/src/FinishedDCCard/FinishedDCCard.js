@@ -20,6 +20,7 @@ export class FinishedDCCard extends Component {
 		console.log(this.props.data, 'this is the initial data being rendered for the DC card');
 		const state = this.state;
 		state.targetDcHero = this.props.data.find(x => x.dc_hero === true);
+		console.log(state.targetDcHero);
 		state.nameOnDcCard = state.targetDcHero.name;
 		state.titleOnDcCard = state.targetDcHero.title;
 		state.affiliationOnDcCard = state.targetDcHero.affiliation;

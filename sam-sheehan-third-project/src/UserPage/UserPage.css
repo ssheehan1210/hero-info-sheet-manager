@@ -1,11 +1,6 @@
-/*img {
-	max-width: 25vw;
-}*/
-
-/*dl {
-	display: flex;
-	width: 32vw;
-}*/
+body {
+	background-color: grey;
+}
 
 dt {
 	font-weight: bold;
@@ -20,7 +15,8 @@ button {
 }
 
 .userhead-container {
-	background-color: grey;
+	background-color: black;
+	color: white;
 }
 
 .card-deck {
@@ -32,44 +28,43 @@ button {
 	width: 28vw;
 }
 
-/*.card-title {
-	margin-left: 5px;
-	margin-right: 5px;
-	font-size: 1em;
-}
-
-.card-text {
-	margin-left: 5px;
-	margin-right: 5px;
-}*/
-
-/*.card-block {
-	display: block;
-	width: 32vw;
-	height: auto;
-	max-height: 100%;
-	max-width: 100%;
-}*/
-
-/*.card-footer {
-	display: block;
-}*/
-
 img.card-img-top {
 	width: 100%;
 }
 
-/*.card-block .row {
-	margin-bottom: unset;
-}*/
-
-/*.card-block .row .col.s6 p {
-	margin: 0.5em 0;
-}*/
-
 #villainCardDesign {
 	background-color: #333;
 	border: #333;
+}
+
+#dcVillainCardDesign {
+	background-color: black;
+	color: white;
+}
+
+#dcHeroCardDesign {
+	background-color: black;
+	color: white;
+}
+
+#acaVillainCardDesign {
+	background-color: red;
+	color: white;
+}
+
+#acaHeroCardDesign {
+	background-color: blue;
+	color: white;
+}
+
+#marvelHeroCardDesign {
+	background-color: red;
+	color: white;
+}
+
+#marvelVillainCardDesign {
+	background-color: black;
+	color: white;
 }
 
 button.close {
@@ -88,6 +83,81 @@ button.close {
 	visibility: hidden;
 }
 
+#create-dc-sheet .col div {
+	background-color: white;
+	border: 1px solid black;
+}
+
+#create-dc-sheet .col div .container {
+	border: unset;
+}
+
+#create-dc-sheet .col div .container .row {
+	border: unset;
+}
+
+#create-dc-sheet .col div .container .row .col {
+	border: unset;
+}
+
+#create-dc-sheet .col div .container .row .col h3 {
+	padding-top: 10px;
+}
+
+#create-dc-sheet .col div .container .row form .form-group .col .form-check {
+	border: unset;
+}
+
+#create-aca-sheet .col div {
+	background-color: white;
+	border: 1px solid black;
+}
+
+#create-aca-sheet .col div .container {
+	border: unset;
+}
+
+#create-aca-sheet .col div .container .row {
+	border: unset;
+}
+
+#create-aca-sheet .col div .container .row .col {
+	border: unset;
+}
+
+#create-aca-sheet .col div .container .row .col h3 {
+	padding-top: 10px;
+}
+
+#create-aca-sheet .col div .container .row form .form-group .col .form-check {
+	border: unset;
+}
+
+#create-marvel-sheet .col div {
+	background-color: white;
+	border: 1px solid black;
+}
+
+#create-marvel-sheet .col div .container {
+	border: unset;
+}
+
+#create-marvel-sheet .col div .container .row {
+	border: unset;
+}
+
+#create-marvel-sheet .col div .container .row .col {
+	border: unset;
+}
+
+#create-marvel-sheet .col div .container .row .col h3 {
+	padding-top: 10px;
+}
+
+#create-marvel-sheet .col div .container .row form .form-group .col .form-check {
+	border: unset;
+}
+
 @media (max-width: 575px) {
 	.card {
 		display: block;
@@ -103,10 +173,3 @@ button.close {
 		padding-left: 0px;
 	}
 }
-
-/*@include media-breakpoint-up(sm) { ... }
-@include media-breakpoint-up(md) { ... }
-@include media-breakpoint-up(lg) { ... }
-@include media-breakpoint-up(xl) { ... }*/
-
-

@@ -33,7 +33,10 @@ export class UserPage extends Component {
 			characterOverEighteen: true,
 			notOverEighteen: false,
 			hasSuperpowers: true,
-			hasNoSuperpowers: false
+			hasNoSuperpowers: false,
+			targetDCLore: '',
+			targetAcaLore: '',
+			targetMarvelLore: ''
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -63,6 +66,7 @@ export class UserPage extends Component {
 		const foundData = this.props.data.find(x => x.dc_hero === true);
 		state.targetHeroEditData = foundData;
 		state.targetidInputValue = state.targetHeroEditData.id;
+		state.targetLore = state.targetHeroEditData.dc_hero;
 		state.targetnameInputValue = state.targetHeroEditData.name;
 		state.targettitleInputValue = state.targetHeroEditData.title;
 		state.targetsubtitleInputValue = state.targetHeroEditData.subtitle;
@@ -112,40 +116,111 @@ export class UserPage extends Component {
 		// state.targetarsenalInputValue = state.targetHeroEditData.arsenal;
 		// state.targetweaknessesInputValue = state.targetHeroEditData.weaknesses;
 		// this.setState(state);
-		this.props.editHeroInfo(state.targetidInputValue, state.targetnameInputValue, state.targettitleInputValue, state.targetsubtitleInputValue, state.targetoverEighteenInputValue, state.targetgenderInputValue, state.targethometownInputValue, state.targetcurrentLocationInputValue, state.targetimageInputValue, state.targetaffiliationInputValue, state.targethasSuperpowersInputValue, state.targetpowersInputValue, state.targetabilitiesInputValue, state.targetarsenalInputValue, state.targetweaknessesInputValue);
+		this.props.editHeroInfo(state.targetidInputValue, state.targetnameInputValue, state.targetAcaLore, state.targetDCLore, state.targetMarvelLore, state.targettitleInputValue, state.targetsubtitleInputValue, state.targetoverEighteenInputValue, state.targetgenderInputValue, state.targethometownInputValue, state.targetcurrentLocationInputValue, state.targetimageInputValue, state.targetaffiliationInputValue, state.targethasSuperpowersInputValue, state.targetpowersInputValue, state.targetabilitiesInputValue, state.targetarsenalInputValue, state.targetweaknessesInputValue);
 	}
 
 	handleInput = (e) => {
 		const state = this.state;
 		state.targetidInputValue = state.targetHeroEditData.id;
-		if (e.target.id === "dchero-name") {
-			state.targetnameInputValue = e.target.value;
-		} else if (e.target.id === "dchero-title") {
-			state.targettitleInputValue = e.target.value;
-		} else if (e.target.id === "dchero-subtitle") {
-			state.targetsubtitleInputValue = e.target.value;
-		} else if (e.target.id === "dchero-over-eighteen" || e.target.id === "dchero-under-eighteen") {
-			state.targetoverEighteenInputValue = e.target.value;
-		} else if (e.target.id === "dchero-gender") {
-			state.targetgenderInputValue = e.target.value;
-		} else if (e.target.id === "dchero-hometown") {
-			state.targethometownInputValue = e.target.value;
-		} else if (e.target.id === "dchero-current-location") {
-			state.targetcurrentLocationInputValue = e.target.value;
-		} else if (e.target.id === "dchero-image") {
-			state.targetimageInputValue = e.target.value;
-		} else if (e.target.id === "dchero-affiliation") {
-			state.targetaffiliationInputValue = e.target.value;
-		} else if (e.target.id === "dchero-has-superpowers" || e.target.id === "dchero-has-no-superpowers") {
-			state.targethasSuperpowersInputValue = e.target.value;
-		} else if (e.target.id === "dchero-powers") {
-			state.targetpowersInputValue = e.target.value;
-		} else if (e.target.id === "dchero-abilities") {
-			state.targetabilitiesInputValue = e.target.value;
-		} else if (e.target.id === "dchero-arsenal") {
-			state.targetarsenalInputValue = e.target.value;
-		} else if (e.target.id === "dchero-weaknesses") {
-			state.targetweaknessesInputValue = e.target.value;
+		if (state.targetHeroEditData.dc_hero === true) {
+			state.targetDCLore = state.targetHeroEditData.dc_hero;
+			state.targetAcaLore = false;
+			state.targetMarvelLore = false;
+			if (e.target.id === "dchero-name") {
+				state.targetnameInputValue = e.target.value;
+			} else if (e.target.id === "dchero-title") {
+				state.targettitleInputValue = e.target.value;
+			} else if (e.target.id === "dchero-subtitle") {
+				state.targetsubtitleInputValue = e.target.value;
+			} else if (e.target.id === "dchero-over-eighteen" || e.target.id === "dchero-under-eighteen") {
+				state.targetoverEighteenInputValue = e.target.value;
+			} else if (e.target.id === "dchero-gender") {
+				state.targetgenderInputValue = e.target.value;
+			} else if (e.target.id === "dchero-hometown") {
+				state.targethometownInputValue = e.target.value;
+			} else if (e.target.id === "dchero-current-location") {
+				state.targetcurrentLocationInputValue = e.target.value;
+			} else if (e.target.id === "dchero-image") {
+				state.targetimageInputValue = e.target.value;
+			} else if (e.target.id === "dchero-affiliation") {
+				state.targetaffiliationInputValue = e.target.value;
+			} else if (e.target.id === "dchero-has-superpowers" || e.target.id === "dchero-has-no-superpowers") {
+				state.targethasSuperpowersInputValue = e.target.value;
+			} else if (e.target.id === "dchero-powers") {
+				state.targetpowersInputValue = e.target.value;
+			} else if (e.target.id === "dchero-abilities") {
+				state.targetabilitiesInputValue = e.target.value;
+			} else if (e.target.id === "dchero-arsenal") {
+				state.targetarsenalInputValue = e.target.value;
+			} else if (e.target.id === "dchero-weaknesses") {
+				state.targetweaknessesInputValue = e.target.value;
+			}
+		} else if (state.targetHeroEditData.academia_hero === true) {
+			state.targetAcaLore = state.targetHeroEditData.academia_hero;
+			state.targetDCLore = false;
+			state.targetMarvelLore = false;
+			if (e.target.id === "dchero-name") {
+				state.targetnameInputValue = e.target.value;
+			} else if (e.target.id === "dchero-title") {
+				state.targettitleInputValue = e.target.value;
+			} else if (e.target.id === "dchero-subtitle") {
+				state.targetsubtitleInputValue = e.target.value;
+			} else if (e.target.id === "dchero-over-eighteen" || e.target.id === "dchero-under-eighteen") {
+				state.targetoverEighteenInputValue = e.target.value;
+			} else if (e.target.id === "dchero-gender") {
+				state.targetgenderInputValue = e.target.value;
+			} else if (e.target.id === "dchero-hometown") {
+				state.targethometownInputValue = e.target.value;
+			} else if (e.target.id === "dchero-current-location") {
+				state.targetcurrentLocationInputValue = e.target.value;
+			} else if (e.target.id === "dchero-image") {
+				state.targetimageInputValue = e.target.value;
+			} else if (e.target.id === "dchero-affiliation") {
+				state.targetaffiliationInputValue = e.target.value;
+			} else if (e.target.id === "dchero-has-superpowers" || e.target.id === "dchero-has-no-superpowers") {
+				state.targethasSuperpowersInputValue = e.target.value;
+			} else if (e.target.id === "dchero-powers") {
+				state.targetpowersInputValue = e.target.value;
+			} else if (e.target.id === "dchero-abilities") {
+				state.targetabilitiesInputValue = e.target.value;
+			} else if (e.target.id === "dchero-arsenal") {
+				state.targetarsenalInputValue = e.target.value;
+			} else if (e.target.id === "dchero-weaknesses") {
+				state.targetweaknessesInputValue = e.target.value;
+			}
+		} else if (state.targetHeroEditData.marvel_hero === true) {
+			state.targetMarvelLore = state.targetHeroEditData.marvel_hero;
+			state.targetDCLore = false;
+			state.targetAcaLore = false
+			if (e.target.id === "dchero-name") {
+				state.targetnameInputValue = e.target.value;
+			} else if (e.target.id === "dchero-title") {
+				state.targettitleInputValue = e.target.value;
+			} else if (e.target.id === "dchero-subtitle") {
+				state.targetsubtitleInputValue = e.target.value;
+			} else if (e.target.id === "dchero-over-eighteen" || e.target.id === "dchero-under-eighteen") {
+				state.targetoverEighteenInputValue = e.target.value;
+			} else if (e.target.id === "dchero-gender") {
+				state.targetgenderInputValue = e.target.value;
+			} else if (e.target.id === "dchero-hometown") {
+				state.targethometownInputValue = e.target.value;
+			} else if (e.target.id === "dchero-current-location") {
+				state.targetcurrentLocationInputValue = e.target.value;
+			} else if (e.target.id === "dchero-image") {
+				state.targetimageInputValue = e.target.value;
+			} else if (e.target.id === "dchero-affiliation") {
+				state.targetaffiliationInputValue = e.target.value;
+			} else if (e.target.id === "dchero-has-superpowers" || e.target.id === "dchero-has-no-superpowers") {
+				state.targethasSuperpowersInputValue = e.target.value;
+			} else if (e.target.id === "dchero-powers") {
+				state.targetpowersInputValue = e.target.value;
+			} else if (e.target.id === "dchero-abilities") {
+				state.targetabilitiesInputValue = e.target.value;
+			} else if (e.target.id === "dchero-arsenal") {
+				state.targetarsenalInputValue = e.target.value;
+			} else if (e.target.id === "dchero-weaknesses") {
+				state.targetweaknessesInputValue = e.target.value;
+			}
 		}
 		this.setState(state);
 	}
@@ -280,14 +355,14 @@ export class UserPage extends Component {
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col s12 userhead-container">
-							<h3>{this.props.currentUsername}'s Hero Character Sheets</h3>
+							<h1>{this.props.currentUsername}'s Hero Character Sheets</h1>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col s12">
 							<div className="card-deck">
 							{this.props.isNotDCHero ?
-								<div className="card card-inverse" id="villainCardDesign">
+								<div className="card card-inverse" id="dcVillainCardDesign">
 									<img className="card-img-top" src={this.state.targetDcHeroImage} alt="DC Villain card"/>
 									<div className="card-block">
 										<h4 className="card-title">DC</h4>
@@ -299,7 +374,7 @@ export class UserPage extends Component {
 									</div>
 								</div>
 							:
-								<div className="card">
+								<div className="card" id="dcHeroCardDesign">
 									<img className="card-img-top" src={this.state.targetDcHeroImage} alt="DC Hero card"/>
 									<div className="card-block">
 										<h4 className="card-title">DC</h4>
@@ -312,7 +387,7 @@ export class UserPage extends Component {
 								</div>
 							}
 							{this.props.isNotAcademiaHero ?
-								<div className="card card-inverse" style={villainCardDesign}>
+								<div className="card card-inverse" id="acaVillainCardDesign">
 									<img className="card-img-top" src={this.state.targetAcademiaHeroImage} alt="HeroAca Villain card"/>
 									<div className="card-block">
 										<h4 className="card-title">My Hero Academia</h4>
@@ -324,7 +399,7 @@ export class UserPage extends Component {
 									</div>
 								</div>
 							:
-								<div className="card">
+								<div className="card" id="acaHeroCardDesign">
 									<img className="card-img-top" src={this.state.targetAcademiaHeroImage} alt="HeroAca Hero card"/>
 									<div className="card-block">
 										<h4 className="card-title">My Hero Academia</h4>
@@ -337,7 +412,7 @@ export class UserPage extends Component {
 								</div>
 							}
 							{this.props.isNotMarvelHero ?
-								<div className="card card-inverse" style={villainCardDesign}>
+								<div className="card card-inverse" id="marvelVillainCardDesign">
 									<img className="card-img-top" src={this.state.targetMarvelHeroImage} alt="Marvel Villain card"/>
 									<div className="card-block">
 										<h4 className="card-title">Marvel</h4>
@@ -349,7 +424,7 @@ export class UserPage extends Component {
 									</div>
 								</div>
 							:
-								<div className="card">
+								<div className="card" id="marvelHeroCardDesign">
 									<img className="card-img-top" src={this.state.targetMarvelHeroImage} alt="Marvel Hero card"/>
 									<div className="card-block">
 										<h4 className="card-title">Marvel</h4>
@@ -369,7 +444,7 @@ export class UserPage extends Component {
 							<button id="button-one" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-dc-sheet" aria-expanded="false" aria-controls="create-dc-sheet">Create DC Character</button>
 						</div>
 						<div className="col s4" id="middle-new-sheets-button">
-							<button id="button-two" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-heroaca-sheet" aria-expanded="false" aria-controls="create-heroaca-sheet">Create HeroAca Character</button>
+							<button id="button-two" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-aca-sheet" aria-expanded="false" aria-controls="create-aca-sheet">Create HeroAca Character</button>
 						</div>
 						<div className="col s4">
 							<button id="button-three" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-marvel-sheet" aria-expanded="false" aria-controls="create-marvel-sheet">Create Marvel Character</button>
@@ -380,7 +455,7 @@ export class UserPage extends Component {
 							<DCSheet />
 						</div>
 					</div>
-					<div className="row collapse" id="create-heroaca-sheet">
+					<div className="row collapse" id="create-aca-sheet">
 						<div className="col s12">
 							<HeroAcaSheet />
 						</div>
@@ -400,3 +475,71 @@ export class UserPage extends Component {
 		)
 	}
 }
+
+
+
+
+
+
+
+// "id": 5,
+//         "name": "Jason Todd",
+//         "user_id": '',
+//         "dc_hero": true,
+//         "academia_hero": false,
+//         "marvel_hero": false,
+//         "title": "Red Mask",
+//         "subtitle": "The Second Robin",
+//         "over_eighteen": true,
+//         "gender": "Male",
+//         "hometown": "Gotham City",
+//         "current_location": "Bludhaven",
+//         "image": "https://i.pinimg.com/736x/39/87/7c/39877c1b4afc4d923b0d98fa1bb9f0fc--batman-vs-superman.jpg",
+//         "affiliation": "Hero",
+//         "has_superpowers": true,
+//         "powers": "Regenerative Body",
+//         "abilities": "Master of Martial Arts, Weapons Specialist, High-Tier Detective Skills",
+//         "arsenal": "Duel Pistols",
+//         "weaknesses": "Blindly Driven Towards Revenge, Abilities Not as Effective Against Batman"
+
+// "id": 3,
+//         "name": "Peter Parker",
+//         "user_id": '',
+//         "dc_hero": false,
+//         "academia_hero": false,
+//         "marvel_hero": true,
+//         "title": "Spiderman",
+//         "subtitle": "Your Friendly Neighborhood Spiderman, The Amazing Spiderman, The Spectacular Spiderman",
+//         "over_eighteen": true,
+//         "gender": "Male",
+//         "hometown": "New York City",
+//         "current_location": "New York City",
+//         "image": "https://starbaseatlanta.com/wp-content/uploads/dp-maab71127-510x600.jpg",
+//         "affiliation": "Hero",
+//         "has_superpowers": true,
+//         "powers": "Spider-Sense, Super-Strength and Durability",
+//         "abilities": "Can Wall-Climb Most Surfaces, Uses Jokes/Puns to Make Enemies Angry and Less Focused in Fights",
+//         "arsenal": "Web-Shooters",
+//         "weaknesses": "Mental Weakness Against The Venom Symbiote, Poor Hero-Life Balance (Personal Life Suffers or Is Ignored In Favor of Hero Life)"
+
+// "id": 7,
+//         "name": "Tenya Iida",
+//         "user_id": '',
+//         "dc_hero": false,
+//         "academia_hero": true,
+//         "marvel_hero": false,
+//         "title": "Ingenium",
+//         "subtitle": "The Engine Hero",
+//         "over_eighteen": false,
+//         "gender": "Male",
+//         "hometown": "Hosu City",
+//         "current_location": "Tokyo",
+//         "image": "https://i.ytimg.com/vi/VseEn9-AP5U/hqdefault.jpg",
+//         "affiliation": "Hero",
+//         "has_superpowers": true,
+//         "powers": "Engine (Born with Jet Engines Attached to His Calves)",
+//         "abilities": "Recipro Burst (propells himself forward with his Quirk, increasing his speed and kicking-power)",
+//         "arsenal": "Bullet-Proof Armor",
+//         "weaknesses": "Damanged Nervous System Throughout his Left Arm"
+
+

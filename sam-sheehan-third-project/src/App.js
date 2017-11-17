@@ -51,14 +51,17 @@ class App extends Component {
       })
   }
 
-  editHeroInfo = (id, newName, newTitle, newSubtitle, newOverEighteen, newGender, newHometown, newCurrentLocation, newImage, newAffiliation, newHasSuperpowers, newPowers, newAbilities, newArsenal, newWeaknesses) => {
+  editHeroInfo = (id, newName, newAcademiaHero, newDCHero, newMarvelHero, newTitle, newSubtitle, newOverEighteen, newGender, newHometown, newCurrentLocation, newImage, newAffiliation, newHasSuperpowers, newPowers, newAbilities, newArsenal, newWeaknesses) => {
     console.log(id, 'this is the id being read');
     console.log(newName, 'this is the character being read');
-    console.log(newTitle, newSubtitle, newOverEighteen, newGender, newHometown, newCurrentLocation, newImage, newAffiliation, newHasSuperpowers, newPowers, newAbilities, newArsenal, newWeaknesses)
+    console.log(newAcademiaHero, newDCHero, newMarvelHero, newTitle, newSubtitle, newOverEighteen, newGender, newHometown, newCurrentLocation, newImage, newAffiliation, newHasSuperpowers, newPowers, newAbilities, newArsenal, newWeaknesses)
     request.post('http://localhost:9292/heroes/' + id)
       .type('form')
       .send({_method: 'PUT'})
       .send({name: newName})
+      .send({academia_hero: newAcademiaHero})
+      .send({dc_hero: newDCHero})
+      .send({marvel_hero: newMarvelHero})
       .send({title: newTitle})
       .send({subtitle: newSubtitle})
       .send({over_eighteen: newOverEighteen})
