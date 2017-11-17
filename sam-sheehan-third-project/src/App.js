@@ -40,6 +40,53 @@ class App extends Component {
       })
   }
 
+  addHeroInfo = (newInfo) => {
+    console.log(newInfo, 'this is the hero info being added');
+    request.post('http://localhost:9292/heroes')
+      .type('form')
+      .send({_method: 'POST'})
+      .send({task: newInfo})
+      .end((err, data) => {
+        this.getCurrentData();
+      })
+  }
+
+  editHeroInfo = (id, newName, newTitle, newSubtitle, newOverEighteen, newGender, newHometown, newCurrentLocation, newImage, newAffiliation, newHasSuperpowers, newPowers, newAbilities, newArsenal, newWeaknesses) => {
+    console.log(id, 'this is the id being read');
+    console.log(newName, 'this is the character being read');
+    console.log(newTitle, newSubtitle, newOverEighteen, newGender, newHometown, newCurrentLocation, newImage, newAffiliation, newHasSuperpowers, newPowers, newAbilities, newArsenal, newWeaknesses)
+    request.post('http://localhost:9292/heroes/' + id)
+      .type('form')
+      .send({_method: 'PUT'})
+      .send({name: newName})
+      .send({title: newTitle})
+      .send({subtitle: newSubtitle})
+      .send({over_eighteen: newOverEighteen})
+      .send({gender: newGender})
+      .send({hometown: newHometown})
+      .send({current_location: newCurrentLocation})
+      .send({image: newImage})
+      .send({affiliation: newAffiliation})
+      .send({has_superpowers: newHasSuperpowers})
+      .send({powers: newPowers})
+      .send({abilities: newAbilities})
+      .send({arsenal: newArsenal})
+      .send({weaknesses: newWeaknesses})
+      .end((err, data) => {
+        this.getCurrentData();
+      })
+  }
+
+  deleteHeroInfo = (info) => {
+    console.log(info, 'this is the hero info being read');
+    request.post('http://localhost:9292/heroes/' + info)
+      .type('form')
+      .send({_method: 'DELETE'})
+      .end((err, data) => {
+        this.getCurrentData();
+      })
+  }
+
   getLoggedIn = (username) => {
     const state = this.state;
     state.currentUsername = username;
@@ -50,7 +97,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          {this.state.isLoggedIn ? <UserPage currentUsername={this.state.currentUsername} data={this.state.data} /> : <Login getLoggedIn={this.getLoggedIn} />}
+          {this.state.isLoggedIn ? <UserPage deleteHeroInfo={this.deleteHeroInfo} editHeroInfo={this.editHeroInfo} addHeroInfo={this.addHeroInfo} currentUsername={this.state.currentUsername} getCurrentData={this.getCurrentData} data={this.state.data} /> : <Login getLoggedIn={this.getLoggedIn} />}
       </div>
     );
   }

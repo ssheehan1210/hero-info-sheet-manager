@@ -23,9 +23,10 @@ button {
 	background-color: grey;
 }
 
-/*.card-deck {
-	display: flex;
-}*/
+.card-deck {
+	padding-right: 15px;
+	padding-left: 15px;
+}
 
 .card {
 	width: 28vw;
@@ -65,3 +66,47 @@ img.card-img-top {
 /*.card-block .row .col.s6 p {
 	margin: 0.5em 0;
 }*/
+
+#villainCardDesign {
+	background-color: #333;
+	border: #333;
+}
+
+button.close {
+	width: unset;
+}
+
+#new-sheets-buttons {
+	padding: 0 30px;
+}
+
+#middle-new-sheets-button {
+	padding: 0 40px;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+@media (max-width: 575px) {
+	.card {
+		display: block;
+		width: 20rem;
+		margin-right: auto!important;
+		margin-left: auto!important;
+	}
+}
+
+@media (max-width: 767px) {
+	.card-deck {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+}
+
+/*@include media-breakpoint-up(sm) { ... }
+@include media-breakpoint-up(md) { ... }
+@include media-breakpoint-up(lg) { ... }
+@include media-breakpoint-up(xl) { ... }*/
+
+
