@@ -1,3 +1,16 @@
+h1 {
+	margin-top: 100px;
+	font-weight: bolder;
+	text-decoration: underline;
+	background-color: orange;
+}
+
+.img-fluid {
+	width: 75%;
+	height: auto;
+}
+
 .text-six {
 	color: orange;
+	text-decoration: underline;
 }

@@ -22,23 +22,16 @@ export class DCSheet extends Component {
 		};
 	}
 
-	// handleInput = (e) => {
-	// 	if (e.key === 'Enter') {
-	// 		const state = this.state;
-	// 		this.props.editHeroInfo(state.focusedId, state.nameInputValue)
-	// 	}
-	// }
-
 	render() {
 		return (
 			<div>
 				<div className="container">
-					<div className="row">
+					<div className="row justify-content-center">
 						<div className="col s12">
 							<h3>New DC Character</h3>
 						</div>
 					</div>
-					<div className="row">
+					<div className="row justify-content-center">
 						<form>
 							<div className="form-group row">
 								<label className="col s2 col-form-label">Name:</label>

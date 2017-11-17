@@ -10,11 +10,22 @@ export class Login extends Component {
 
 	render() {
 		return (
-			<div className='row'>
-				<div className='col s12'>
-					<h3>User Sign-In:</h3>
-					<p className='text-six'>This represents the User login layout.</p>
-					<input type='text' onKeyPress={this.login}/>
+			<div>
+				<div className='row'>
+					<div className="col s12">
+						<h1>Character Info Sheet Manager</h1>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col s12'>
+						<h3 className="text-six">Username Sign-In</h3>
+						<input type='text' onKeyPress={this.login}/>
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col s12'>
+						<img className="img-fluid" src="http://www.selfvirtue.com/wp-content/uploads/2017/03/superhero-costumes-for-men.jpg" />
+					</div>
 				</div>
 			</div>
 		)

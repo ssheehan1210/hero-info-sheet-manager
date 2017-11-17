@@ -347,11 +347,14 @@ export class UserPage extends Component {
 							</div>
 							<div className="modal-footer">
 								<button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button value="Submit" type="button" className="btn btn-primary" onClick={this.finishedEditing}>Save changes</button>
+								<button value="Submit" type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.finishedEditing}>Save changes</button>
 							</div>
 						</div>
 					</div>
 				</div>
+
+
+
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col s12 userhead-container">
@@ -439,6 +442,9 @@ export class UserPage extends Component {
 							</div>
 						</div>
 					</div>
+
+
+
 					<div className="row" id="new-sheets-buttons">
 						<div className="col s4">
 							<button id="button-one" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-dc-sheet" aria-expanded="false" aria-controls="create-dc-sheet">Create DC Character</button>
@@ -447,7 +453,7 @@ export class UserPage extends Component {
 							<button id="button-two" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-aca-sheet" aria-expanded="false" aria-controls="create-aca-sheet">Create HeroAca Character</button>
 						</div>
 						<div className="col s4">
-							<button id="button-three" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-marvel-sheet" aria-expanded="false" aria-controls="create-marvel-sheet">Create Marvel Character</button>
+							<button id="button-three" className="btn btn-primary" type="button" data-toggle="collapse" data-target="#create-marvel-sheet" aria-expanded="false" aria-controls="create-marvel-sheet" disabled>Create Marvel Character</button>
 						</div>
 					</div>
 					<div className="row collapse" id="create-dc-sheet">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
 import {Login} from './Login/Login.js';
 import {UserPage} from './UserPage/UserPage.js';
@@ -100,7 +99,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          {this.state.isLoggedIn ? <UserPage deleteHeroInfo={this.deleteHeroInfo} editHeroInfo={this.editHeroInfo} addHeroInfo={this.addHeroInfo} currentUsername={this.state.currentUsername} getCurrentData={this.getCurrentData} data={this.state.data} /> : <Login getLoggedIn={this.getLoggedIn} />}
+          {this.state.isLoggedIn ?
+            <UserPage deleteHeroInfo={this.deleteHeroInfo} editHeroInfo={this.editHeroInfo} addHeroInfo={this.addHeroInfo} currentUsername={this.state.currentUsername} getCurrentData={this.getCurrentData} data={this.state.data} />
+          :
+            <Login getLoggedIn={this.getLoggedIn} />
+          }
       </div>
     );
   }
